@@ -8,18 +8,21 @@
             <td><input type="text" name="id" autocomplete="off" required placeholder="USER ID" value="<% if(data!=undefined){ %><%= data.rows[0][0] %><% }else{ %><%= input.id %><% } %>" readonly></td>
         </tr>
         <tr>
-            <td>비밀번호 </td>
-            <td><input type="password" name="pw" autocomplete="off" required placeholder="PASSWORD"></td>
+            <td>현재 비밀번호 </td>
+            <td><input type="password" name="pw_before" autocomplete="off" required placeholder="PASSWORD"></td>
+            <% if(pw != undefined){ %>
+            <td><%= pw %></td>
+            <% } %>
         </tr>
         <tr>
-            <td>비밀번호 확인 </td>
-            <td><input type="password" name="pw1" autocomplete="off" required placeholder="CONFIRM PASSWORD"></td>
+            <td>변경할 비밀번호 </td>
+            <td><input type="password" name="pw_after" autocomplete="off" required placeholder="CONFIRM PASSWORD"></td>
         </tr>
         <tr>
             <td>닉네임 </td>
             <td><input type="text" name="nickname" autocomplete="off" required placeholder="NICKNAME" value="<% if(data!=undefined){ %><%= data.rows[0][2] %><% }else{ %><%= input.nickname %><% } %>"></td>
-            <% if(message != undefined){ %>
-            <td><%= message %></td>
+            <% if(nickname != undefined){ %>
+            <td><%= nickname %></td>
             <% } %>
         </tr>
         <tr>

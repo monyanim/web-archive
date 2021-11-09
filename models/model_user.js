@@ -60,18 +60,27 @@ module.exports = {
     mypage_process : function(req, callback){
         let result = 'denied';
         let message_nickname = '';
-        req.conn.execute(`select * from user_table where nickname = '${req.body.nickname}'`, [], [], function(err, data){
-            if(data.rows[0]!=undefined){
-                if(data.rows[0][0]!=req.session.user_id) message_nickname = '닉네임 중복';
-            }
-            if(message_nickname==''){
-                req.conn.execute(`update user_table set password = '${req.body.pw}', nickname = '${req.body.nickname}', email = '${req.body.email}' where id = '${req.session.user_id}'`, [], [], function(err1, data1){
-                    result = 'succeed';
-                    callback(err, err1, result, message_nickname, req.body);
+        let message_pw = ''
+        req.conn.execute(`select * from user_table where id = '${req.session.user_id}'`, [], [], function(err2, data2){
+            if(data2.rows[0][1]==req.body.pw_before){
+                req.conn.execute(`select * from user_table where nickname = '${req.body.nickname}'`, [], [], function(err, data){
+                    if(data.rows[0]!=undefined){
+                        if(data.rows[0][0]!=req.session.user_id) message_nickname = '닉네임 중복';
+                    }
+                    if(message_nickname==''){
+                        req.conn.execute(`update user_table set password = '${req.body.pw_after}', nickname = '${req.body.nickname}', email = '${req.body.email}' where id = '${req.session.user_id}'`, [], [], function(err1, data1){
+                            result = 'succeed';
+                            callback(err, err1, err2, result, message_nickname, message_pw, req.body);//성공
+                        });
+                    }else{
+                        callback(err, undefined, err2, result, message_nickname, message_pw, req.body);//비밀번호는 맞는데 바꿀 닉네임이 이미 있음
+                    }
                 });
             }else{
-                callback(err, undefined, result, message_nickname, req.body);
+                message_pw = '비밀번호가 다릅니다.';
+                callback(undefined, undefined, err2, result, message_nickname, message_pw, req.body);//비밀번호 틀림
             }
         });
+        
     }
 }

@@ -40,7 +40,7 @@ module.exports = {
         if(req.session.user_id){
             user.mypage(req, function(err, data){
                 if(err) res.send(`<script>alert('${err}');</script>`);
-                else res.render('mypage', {message : undefined, data : data, req : req});
+                else res.render('mypage', {nickname : undefined, pw : undefined, data : data, req : req});
             })
         }else{
             res.send(`<script>alert('로그인 후 이용하세요.'); window.location.href = 'login'; </script>`);
@@ -48,12 +48,15 @@ module.exports = {
     },
     mypage_result : function(req, res){
         if(req.session.user_id){
-            user.mypage_process(req, function(err, err1, result, message, body){
+            user.mypage_process(req, function(err, err1, err2, result, nickname, pw, body){
                 console.log(result);
                 if(err) res.send(`<script>alert('${err}');</script>`);
                 if(err1) res.send(`<script>alert('${err1}');</script>`);
+                if(err2) res.send(`<script>alert('${err2}');</script>`);
                 if(result === 'succeed') res.send(`<script>alert('개인정보 수정이 완료되었습니다. 로그아웃됩니다.'); window.location.href = '../logout'; </script>`);
-                else res.render('mypage', {message : message, data : undefined, req : req, input : body});
+                else if((result == 'denied')&&(nickname == ''))
+                    res.render('mypage', {nickname : nickname, pw : pw, data : undefined, req : req, input : body});
+                else res.render('mypage', {nickname : nickname, pw : pw, data : undefined, req : req, input : body});
             });
         }else{
             res.send(`<script>alert('로그인 후 이용하세요.'); window.location.href = 'login'; </script>`);
