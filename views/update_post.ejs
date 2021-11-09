@@ -1,0 +1,30 @@
+<form action="post" method="post">
+    <div class="post_title">
+        제목
+        <input type="text" name="title" autocomplete="off" required placeholder="제목" value="<%= data.rows[0][14] %>">
+    </div>
+    <div class="post_url">
+        URL
+        <input type="text" name="url" autocomplete="off" required placeholder="URL" value="<%= data.rows[0][1] %>">
+    </div>
+    <div class="post_text">
+        내용
+        <input type="textarea" name="text" autocomplete="off" required placeholder="내용" <% if(data.rows[0][4]!=undefined){ %> value="<%= data.rows[0][16] %>" <% }%>>
+    </div>
+    <div class="post_tag">
+        <input type="text" name="tag1" autocomplete="off" placeholder="태그1" <% if(data.rows[0][4]!=undefined){ %> value="<%= data.rows[0][4] %>" <% }%>>
+        <input type="text" name="tag2" autocomplete="off" placeholder="태그2" <% if(data.rows[0][5]!=undefined){ %> value="<%= data.rows[0][5] %>" <% }%>>
+        <input type="text" name="tag3" autocomplete="off" placeholder="태그3" <% if(data.rows[0][6]!=undefined){ %> value="<%= data.rows[0][6] %>" <% }%>>
+        <input type="text" name="tag4" autocomplete="off" placeholder="태그4" <% if(data.rows[0][7]!=undefined){ %> value="<%= data.rows[0][7] %>" <% }%>>
+        <input type="text" name="tag5" autocomplete="off" placeholder="태그5" <% if(data.rows[0][8]!=undefined){ %> value="<%= data.rows[0][8] %>" <% }%>>
+        <input type="text" name="tag6" autocomplete="off" placeholder="태그6" <% if(data.rows[0][9]!=undefined){ %> value="<%= data.rows[0][9] %>" <% }%>>
+        <input type="text" name="tag7" autocomplete="off" placeholder="태그7" <% if(data.rows[0][10]!=undefined){ %> value="<%= data.rows[0][10] %>" <% }%>>
+        <input type="text" name="tag8" autocomplete="off" placeholder="태그8" <% if(data.rows[0][11]!=undefined){ %> value="<%= data.rows[0][11] %>" <% }%>>
+        <input type="text" name="tag9" autocomplete="off" placeholder="태그9" <% if(data.rows[0][12]!=undefined){ %> value="<%= data.rows[0][12] %>" <% }%>>
+        <input type="text" name="tag10" autocomplete="off" placeholder="태그10" <% if(data.rows[0][13]!=undefined){ %> value="<%= data.rows[0][13] %>" <% }%>>
+    </div>
+    <input type="hidden" name="post_num" value="<%= data.rows[0][15] %>">
+    <input type="hidden" name="page" value="<%= page %>">
+    <button type="submit">작성</button>
+    <button type="button" onclick="history.back(-1)">취소</button>
+</form>

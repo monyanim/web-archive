@@ -1,0 +1,27 @@
+<div class="create_account">
+    <h1>
+        뭐였더라에 오신 것을 환영합니다!
+    </h1>
+    <form action="create_account" method="post">
+        <div class="create_id">
+            <input type="text" name="id" autocomplete="off" required placeholder="USER ID">
+            <%= id %>
+        </div>
+        <div class="create_pw">
+            <input type="password" name="pw" autocomplete="off" required placeholder="PASSWORD">
+        </div>
+        <div class="confirm_pw">
+            <input type="password" name="pw1" autocomplete="off" required placeholder="CONFIRM PASSWORD">
+        </div>
+        <div class="nickname">
+            <input type="text" name="nickname" autocomplete="off" required placeholder="NICKNAME">
+            <%= nickname %>
+        </div>
+        <div class="email">
+            <input type="email" name="email" autocomplete="off" required placeholder="EMAIL ADDRESS">
+        </div>
+        <div class="createbtn">
+            <button type="submit">회원가입</button>
+        </div>
+    </form>
+</div>

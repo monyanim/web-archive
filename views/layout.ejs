@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <title>뭐였더라</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="layout.js" defer></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar_logo">
+                <a href="/">
+                    <img src="images/logo1.png" width=150>
+                </a>
+            </div>
+            <ul class="navbar_menu">
+                <li><a href="/my_storage?page=1">내 저장소</a></li>
+                <li><a href="">자유 게시판</a></li>
+                <li><a href="">FAQ</a></li>
+            </ul>
+            <ul class="navbar_login">
+                <% if(!req.session.user_id){ %>
+                <li><a href="/login"><img src="images/login1.png" width=15> 로그인</a></li>
+                <li><a href=""><img src="images/share1.png" width=15> 공유하기</a></li>
+                <% }else{ %>
+                <li><a href="/logout"><img src="images/logout1.png" width=15> 로그아웃</a></li>
+                <li><a href="/mypage"><img src="images/login1.png" width=15> 내 정보</a></li>
+                <li><a href=""><img src="images/share1.png" width=15> 공유하기</a></li>
+                <% } %>
+            </ul>
+            <a href="#" class="navbar_toggle">
+                <img src="images/togglebtn1.png" width=24>
+            </a>
+        </nav>
+        <%- body %>
+    </body>
+</html>
