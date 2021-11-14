@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const ctrl_user = require('../controllers/ctrl_user');
 const ctrl_post = require('../controllers/ctrl_post');
-const passport = require('passport');
 
 router.get('/', ctrl_user.main);//메인 화면
 router.get('/login', ctrl_user.login);//로그인 화면
