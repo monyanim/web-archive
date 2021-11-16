@@ -1,3 +1,6 @@
+const fs = require('fs');
+const request = require('request');
+
 let postlist = function(select_list, page_num, callback){ //게시글 목록 로드(확인 필요)
     const onepage = 20; //한 페이지 최대 게시글 수
     let maxpage = Math.ceil(select_list.rows.length/onepage); //최대 몇 페이지까지 있는지
@@ -29,7 +32,15 @@ module.exports = {
         req.conn.execute(`insert into postlist values ('${req.session.user_id}', '${req.body.url}', 'path_pdf', sysdate, '${req.body.tag1}', 
         '${req.body.tag2}', '${req.body.tag3}', '${req.body.tag4}', '${req.body.tag5}', '${req.body.tag6}', '${req.body.tag7}', '${req.body.tag8}', 
         '${req.body.tag9}', '${req.body.tag10}', '${req.body.title}', post_num.nextval, '${req.body.text}')`, [], [], function(err, insert){
-            callback(err);
+            req.conn.execute(`select * from postlist where Rowid='${insert.lastRowid}'`, [], [], function(err1, result){
+                request(result.rows[0][1], function(err2, response, html){
+                    fs.writeFile(`files/${result.rows[0][15]}.html`, html, 'utf-8', function(err3){
+                        if(err2) console.log(err2);
+                        if(err3) console.log(err3);
+                        callback(err, err1, err2, err3);
+                    });
+                });
+            });
         });
     },
     read_post : function(req, callback){

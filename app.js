@@ -20,6 +20,7 @@ app.use(express.json());
 app.use(express.static(__dirname + '/views'));
 app.use('/update_post', express.static('views'));//이렇게 하는게 맞나?
 app.use('/post', express.static('views'));
+app.use('/read_archive', express.static('files'));
 
 app.use(expressLayouts);
 app.set('layout', 'layout');

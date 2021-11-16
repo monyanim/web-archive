@@ -23,7 +23,9 @@ router.get('/update_post/:post_num', ctrl_post.update_post);//글 수정 화면
 router.post('/update_post/:post_num', ctrl_post.update_post_result);//글 수정 결과
 
 router.get('/post/:post_num', ctrl_post.read_post);//글 읽기
+router.post('/post/read_archive', ctrl_post.read_archive);//저장한 웹 페이지 보기
 router.get('/delete/:post_num', ctrl_post.delete_post_result);//글삭
+
 /*
 router.get('/sewing', ctrl_user.sewing)//재봉
 router.get('/craft', ctrl_user.craft)//세공
