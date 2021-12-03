@@ -1,19 +1,32 @@
 <form>
-    <table class="postlist">
-        <th>번호</th>
-        <th>제목</th>
-        <th>저장 날짜</th>
-        <% if(list==undefined){ %>
-            작성한 글이 없습니다.
-        <% }else{
-            for(let i=0; i<list.length; i++){ %>
-            <tr>
-                <td><%= i+1 %></td>
-                <td><a href="/post/<%= list[i][15] %>?page=<%= page %>" class=""><%= list[i][14] %></a></td>
-                <td><%= list[i][3] %></td>
-            </tr>
-        <% }} %>
-        
-    </table>
-    <button type="button" onclick="location.href='/add_post'">등록</button>
+    <div class="postlist_wrap">
+        <table class="postlist">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>저장 날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(list==undefined){ %>
+                    작성한 글이 없습니다.
+                <% }else{
+                    for(let i=0; i<list.length; i++){ %>
+                    <tr>
+                        <td><%= list.length-i %></td>
+                        <td><a href="/post/<%= list[i][15] %>?page=<%= page %>" class=""><%= list[i][14] %></a></td>
+                        <td><%= list[i][3] %></td>
+                    </tr>
+                <% }} %>
+            </tbody>
+        </table>
+        <div class="pagelist">
+            <% if(list!=undefined){
+                for(let i=1; i<=maxpage; i++){ %>
+                    <a href=""><%= i %></a>
+            <% }} %>
+        </div>
+        <button type="button" onclick="location.href='/add_post'">등록</button>
+    </div>
 </form>

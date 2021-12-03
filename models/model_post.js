@@ -34,8 +34,9 @@ module.exports = {
         '${req.body.tag9}', '${req.body.tag10}', '${req.body.title}', post_num.nextval, '${req.body.text}')`, [], [], function(err, insert){
             req.conn.execute(`select * from postlist where Rowid='${insert.lastRowid}'`, [], [], function(err1, result){
                 request(result.rows[0][1], function(err2, response, html){
+                    if(err2) console.log(err2);
+                    console.log("html은 !!! " + html);
                     fs.writeFile(`files/${result.rows[0][15]}.html`, html, 'utf-8', function(err3){
-                        if(err2) console.log(err2);
                         if(err3) console.log(err3);
                         callback(err, err1, err2, err3);
                     });

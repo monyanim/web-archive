@@ -1,19 +1,39 @@
 *{
     image-rendering: -webkit-optimize-contrast;
 }
-body {
+body{
     margin: 0;
     background-color: #253035;
+    height: 100vh;
 }
-a {
+a{
     text-decoration: none;
     color : white;
+}
+ul{
+    list-style-type: square;
+}
+.intro{
+    background-color: #253035;
+    line-height: 40px;
+    padding-top : 50px;
+    color:white;
+    font-family: 'bazzi', 배찌체;
+    font-size: 50px;
+    font-weight: 400;
+}
+.intro .hi{
+    font-size: 20px;
+}
+.intro .help{
+    line-height: 70px;
+    font-size: 30px;
 }
 .navbar{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     background-color: #253035;
+    align-items: center;
     padding: 8px 12px;
 }
 .navbar_menu{
@@ -52,7 +72,7 @@ a {
 }
 .mainbody{
     background-color: white;
-    padding-left: 20%;
+    margin-left: 20%;
 }
 .login_form{
     flex-direction: column;
@@ -62,8 +82,8 @@ a {
     display: flex;
     padding-top: 150px;
     align-items: center;
-    height: 100vh;
-    background-color: #455050;
+    
+    background-color: #253035;
     position: relative;
     z-index: 2;
 }
@@ -104,16 +124,41 @@ a {
     text-align: center;
 }
 .caption div{
-    margin-bottom: 15px;
+    background-color: #253035;
 }
 .caption a{
     font-size: 15px;
     color: #999;
     text-decoration: none;
 }
+.postlist_wrap{
+    padding: 100px;
+}
 .postlist{
+    width: 100%;
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 15px 0;
+    color: white;
+}
+.postlist tr{
+    border-bottom: 1px solid #999;
+}
+.postlist th,
+.postlist td{
+    padding: 5px;
+    text-align: center;
+}
+.postlist tbody tr td:nth-child(2){
+    text-align: left;
+}
+.pagelist{
+    text-align: center;
+}
+.pagelist a{
+    padding: 5px 10px;
+    display: inline-block;
+    border: 1px solid white;
+    border-radius: 5px;
 }
 @media screen and (max-width: 753px){
     .navbar{
