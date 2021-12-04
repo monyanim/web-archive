@@ -160,6 +160,44 @@ ul{
     border: 1px solid white;
     border-radius: 5px;
 }
+.read_post_wrap{
+    margin: 100px;
+    color: white;
+}
+.read_post_wrap table{
+    padding-bottom: 30px;
+}
+.post_text tr td{
+    vertical-align: top;
+    height: 400px;
+    width: 300px;
+}
+.read_post_wrap table tr td:nth-child(1){
+    width: 150px;
+    font-weight: 700;
+}
+.post_tag span{
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 3px 8px;
+    margin-right: 10px;
+}
+.create_account{
+    
+    margin: 100px;
+    color: white;
+    text-align: center;
+}
+.table_create_account{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: auto;
+    text-align: left;
+}
+.table_create_account tr td:nth-child(1){
+    width: 150px;
+    font-weight: 700;
+}
 @media screen and (max-width: 753px){
     .navbar{
         flex-direction: column;

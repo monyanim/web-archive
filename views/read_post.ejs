@@ -1,30 +1,44 @@
 <form action="read_archive" target="_blank" method="post">
-    <table class="read_post">
-        <tr>
-            <td>제목</td>
-            <td><%= data.rows[0][14] %></td>
-        </tr>
-        <tr>
-            <td>출처</td>
-            <td><%= data.rows[0][1] %></td>
-        </tr>
-        <tr>
-            <td>내용</td>
-            <td><%= data.rows[0][16] %></td>
-        </tr>
-        <tr>
-            <td>태그</td>
-            <td>
-                <% for(let i=4; i<14; i++){ 
-                    if(data.rows[0][i] != undefined){ %>
-                        <%= data.rows[0][i] %>
-                        <% }} %>
-            </td>
-        </tr>
-    </table>
-    <input type="hidden" name="post_num" value="<%= data.rows[0][15] %>">
-    <button type="submit">저장한 웹 사이트 보기</button>
-    <button type="button" onclick="location.href='/update_post/<%= data.rows[0][15] %>?page=<%= page %>'">수정</button>
-    <button type="button" onclick="location.href='/delete/<%= data.rows[0][15] %>'">삭제</button>
-    <button type="button" onclick="location.href='/my_storage?page=<%= page %>'">목록</button>
+    <div class="read_post_wrap">
+        <table class="post_title">
+            <tr>
+                <td>제목 ▶ </td>
+                <td><%= data.rows[0][14] %></td>
+            </tr>
+        </table>
+        <table class="post_date">
+            <tr>
+                <td>저장 날짜 ▶ </td>
+                <td><%= data.rows[0][3] %></td>
+            </tr>
+        </table>
+        <table class="post_url">
+            <tr>
+                <td>출처 ▶ </td>
+                <td><%= data.rows[0][1] %></td>
+            </tr>
+        </table>
+        <table class="post_text">
+            <tr>
+                <td>내용 ▶ </td>
+                <td><%= data.rows[0][16] %></td>
+            </tr>
+        </table>
+        <table class="post_tag">
+            <tr>
+                <td>태그 ▶ </td>
+                <td>
+                    <% for(let i=4; i<14; i++){ 
+                        if(data.rows[0][i] != undefined){ %>
+                            <span><%= data.rows[0][i] %></span>
+                            <% }} %>
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" name="post_num" value="<%= data.rows[0][15] %>">
+        <button type="submit">저장한 웹 사이트 보기</button>
+        <button type="button" onclick="location.href='/update_post/<%= data.rows[0][15] %>?page=<%= page %>'">수정</button>
+        <button type="button" onclick="location.href='/delete/<%= data.rows[0][15] %>'">삭제</button>
+        <button type="button" onclick="location.href='/my_storage?page=<%= page %>'">목록</button>
+    </div>
 </form>
