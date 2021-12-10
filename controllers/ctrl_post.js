@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
     my_storage : function(req, res){
         if(req.session.user_id){
-            post.my_list(req, function(err, maxpage, current_page, list){
-                res.render('my_storage', {maxpage : maxpage, list : list, req : req, page : current_page});
+            post.my_list(req, function(err, maxpage, current_page, list, total){
+                res.render('my_storage', {maxpage : maxpage, list : list, req : req, page : current_page, total : total});
             });
         }else{        
             res.send(`<script>alert('로그인 후 이용하세요.'); window.location.href = 'login'; </script>`);

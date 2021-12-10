@@ -124,7 +124,7 @@ ul{
     text-align: center;
 }
 .caption div{
-    background-color: #253035;
+    margin-bottom: 10px;
 }
 .caption a{
     font-size: 15px;
@@ -133,6 +133,7 @@ ul{
 }
 .postlist_wrap{
     padding: 100px;
+    color: white;
 }
 .postlist{
     width: 100%;
@@ -140,16 +141,33 @@ ul{
     margin: 15px 0;
     color: white;
 }
+.postlist thead{
+    background-color: #455050;
+}
+.postlist thead tr th:nth-child(1){
+    width: 70px;
+}
+.postlist thead tr th:nth-child(2){
+    width: 400px;
+}
+.postlist thead tr th:nth-child(3){
+    width: 200px;
+}
 .postlist tr{
     border-bottom: 1px solid #999;
 }
 .postlist th,
 .postlist td{
-    padding: 5px;
+    padding: 7px;
     text-align: center;
 }
 .postlist tbody tr td:nth-child(2){
     text-align: left;
+
+}
+.postlist tbody tr td:nth-child(2) a:hover{
+    background-color: #455050;
+    border-radius: 4px;
 }
 .pagelist{
     text-align: center;
@@ -183,7 +201,6 @@ ul{
     margin-right: 10px;
 }
 .create_account{
-    
     margin: 100px;
     color: white;
     text-align: center;
@@ -197,6 +214,42 @@ ul{
 .table_create_account tr td:nth-child(1){
     width: 150px;
     font-weight: 700;
+}
+.add_post{
+    margin: 100px;
+    color: white;
+}
+.add_post table{
+    width: 100%;
+    padding-bottom: 30px;
+}
+.add_post_text tr td{
+    vertical-align: top;
+    height: 400px;
+}
+.add_post tr td:nth-child(1){
+    width: 150px;
+    font-weight: 700;
+}
+.add_post table tr td div input, textarea{
+    padding: 10px 10px 10px;
+    background-color: #253035;
+    border: none;
+    border-bottom: 1px solid #999;
+    color: white;
+    outline: none;
+}
+.post_title input, .post_url input{
+    width: 90%;
+}
+.add_post textarea{
+    border: 1px solid #999;
+    width: 90%;
+    height: 400px;
+    resize: none;
+}
+.add_post_tag input {
+    width: 100px;
 }
 @media screen and (max-width: 753px){
     .navbar{

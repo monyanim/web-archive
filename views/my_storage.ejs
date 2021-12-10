@@ -1,5 +1,6 @@
 <form>
     <div class="postlist_wrap">
+        총 <%= total %>개의 글이 있습니다.
         <table class="postlist">
             <thead>
                 <tr>
@@ -14,7 +15,7 @@
                 <% }else{
                     for(let i=0; i<list.length; i++){ %>
                     <tr>
-                        <td><%= list.length-i %></td>
+                        <td><%= total-10*(page-1)-i %></td>
                         <td><a href="/post/<%= list[i][15] %>?page=<%= page %>" class=""><%= list[i][14] %></a></td>
                         <td><%= list[i][3] %></td>
                     </tr>
@@ -24,7 +25,7 @@
         <div class="pagelist">
             <% if(list!=undefined){
                 for(let i=1; i<=maxpage; i++){ %>
-                    <a href=""><%= i %></a>
+                    <a href="/my_storage?page=<%= i %>" <% if(page==i){ %> style="background-color:#455050" <% } %>><%= i %></a>
             <% }} %>
         </div>
         <button type="button" onclick="location.href='/add_post'">등록</button>
